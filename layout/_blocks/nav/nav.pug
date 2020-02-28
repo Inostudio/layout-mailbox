@@ -1,0 +1,23 @@
+//- +nav([
+//-     {
+//-         name: string,
+//-         href: string,
+//-         active: boolean,
+//-     },
+//- ])
+
+mixin nav(obj)
+    nav(class="nav")&attributes(attributes)
+
+        ul(class="nav__list")
+
+            each item in obj
+
+                - var href = item.href ? item.href : "#42"
+                - var activeClass = item.active ? " is-active" : ""
+
+                li(class="nav__item")
+                    !="\n"
+                    a(class="nav__link" + activeClass, href=href) !{item.name}
+                    !="\n"
+    //END .nav

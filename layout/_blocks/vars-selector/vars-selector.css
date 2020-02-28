@@ -1,0 +1,2 @@
+@custom-selector :--touch html.touchevents;
+@custom-selector :--no-touch html.no-touchevents;

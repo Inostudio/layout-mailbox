@@ -1,0 +1,55 @@
+@import "../vars-selector/vars-selector.css";
+
+.button {
+    display: inline-block;
+    vertical-align: middle;
+
+    &__container {
+
+    }
+
+    &__icon {
+
+        &--position {
+
+            &-first {
+
+            }
+
+            &-last {
+
+            }
+        }
+    }
+
+    &__text {
+
+    }
+
+    :--no-touch &:hover {
+
+    }
+
+    &:focus {
+
+        :--no-touch & {
+
+        }
+
+        &:active {
+
+            :--no-touch & {
+
+            }
+
+            :--touch & {
+
+            }
+        }
+    }
+
+    &:disabled,
+    &.is-disabled {
+
+    }
+}

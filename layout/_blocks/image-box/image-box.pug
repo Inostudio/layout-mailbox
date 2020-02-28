@@ -1,0 +1,29 @@
+//- +image-box({
+//-     path: string,
+//-     name: string,
+//-     format: string,
+//-     alt: string,
+//- })
+
+mixin image-box(obj)
+
+    -
+        var path = obj.path ? obj.path + "/" : ""
+        var src = "image/" + path + obj.name + "@1x." + obj.format
+        var alt = obj.alt ? obj.alt : ""
+        var srcset = false
+
+    if obj.format != 'svg' && obj.format != 'gif'
+        -
+            var srcset = "images/" + path + obj.name + "@1x." + obj.format + " 1x,"
+            srcset += " images/" + path + obj.name + "@2x." + obj.format + " 2x"
+
+    picture(class="image-box")&attributes(attributes)
+        !="\n"
+        img(
+            class="image-box__image",
+            srcset=srcset,
+            src=src,
+            alt=alt)
+        !="\n"
+    //END. image-box

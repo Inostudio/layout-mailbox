@@ -1,0 +1,41 @@
+@import "../_settings/_settings.css";
+@import "../vars-media/vars-media.css";
+@import "../visually-hidden/visually-hidden.css";
+
+.page {
+
+    &::after {
+
+        @if $develop {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 100000000;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: tomato;
+        } @else {
+            @include visually-hidden;
+        }
+
+        @if $mobileFirst {
+            content: "XS";
+            @media (--S) { content: "S"; }
+            @media (--M) { content: "M"; }
+            @media (--L) { content: "L"; }
+            @media (--XL) { content: "XL"; }
+            @media (--XXL) { content: "XXL"; }
+        } @else {
+            content: "XL";
+            @media (--XXL) { content: "XXL"; }
+            @media (--L) { content: "L"; }
+            @media (--M) { content: "M"; }
+            @media (--S) { content: "S"; }
+            @media (--XS) { content: "XS"; }
+        }
+    }
+
+    &.popup-is-open {
+        overflow: hidden;
+    }
+}

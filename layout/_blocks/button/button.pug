@@ -1,0 +1,68 @@
+//- +button({
+//-     tag: string,
+//-     type: string,
+//-     href: string,
+//-     text: string,
+//-     mods: array,
+//-     disabled: boolean,
+//-     icon: {
+//-         name: string,
+//-         width: number,
+//-         height: number,
+//-         mods: array,
+//-     },
+//-     iconPosition: string,
+//- })
+
+include ../../_blocks/icon/icon.pug
+
+mixin button(obj)
+
+    -
+        var tag = obj.tag ? obj.tag : "button"
+        var iconPosition = obj.iconPosition ? obj.iconPosition : "last"
+        var type = false
+        var href = false
+        var disabled = false
+        var disabledClass = ""
+        var modClasses = ""
+
+    case tag
+
+        when "a"
+            - href = obj.href ? obj.href : "#42"
+            - disabledClass = obj.disabled ? " is-disabled" : ""
+
+        when "button"
+            - type = obj.type ? obj.type : "button"
+            - disabled = obj.disabled ? obj.disabled : false
+
+        default
+            - disabledClass = obj.disabled ? " is-disabled" : ""
+
+    if obj.mods
+        each item in obj.mods
+            - modClasses += " button--" + item
+
+    !="\n"
+    #{tag}(
+        class="button" + modClasses + disabledClass,
+        type=type,
+        href=href,
+        disabled=disabled
+    )&attributes(attributes)
+
+        !="\n"
+        span(class="button__container")
+
+            !="\n"
+            if obj.icon && iconPosition == "first"
+                +icon(obj.icon)(class="button__icon button__icon--position-" + iconPosition)
+
+            span(class="button__text") !{obj.text}
+
+            if obj.icon && iconPosition == "last"
+                +icon(obj.icon)(class="button__icon button__icon--position-" + iconPosition)
+            !="\n"
+        !="\n"
+    //END .button

@@ -1,0 +1,27 @@
+//- +icon({
+//-     name: string,
+//-     width: number,
+//-     height: number,
+//-     mods: array,
+//- })
+
+mixin icon(obj)
+
+    -
+        var defaultSize = 24
+        var iconWidth = obj.width ? obj.width : defaultSize
+        var iconHeight = obj.height ? obj.height : defaultSize
+        var modClasses = ""
+
+    if obj.mods
+        each item in obj.mods
+            - modClasses += " icon--" + item
+
+    !="\n"
+    svg(
+        class="icon" + modClasses,
+        width=iconWidth,
+        height=iconHeight
+    )&attributes(attributes)
+        use(xlink:href="images/svg-sprite.svg#" + obj.name)
+    //END .icon
