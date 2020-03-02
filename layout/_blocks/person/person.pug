@@ -1,0 +1,24 @@
+mixin person(obj)
+    div(class="person")&attributes(attributes)
+        include ../image-box/image-box.pug
+        
+        -
+            var firstname = obj.firstname ? obj.firstname : ""
+            var lastname = obj.lastname ? obj.lastname : ""
+            var separatorAtl = obj.lastname ? " " : ""
+            var firstnameLower = obj.firstname ? obj.firstname.toLowerCase() : ""
+            var lastnameLower = obj.lastname ? obj.lastname.toLowerCase() : ""
+            var separator = obj.lastname ? "-" : ""
+
+        +image-box({
+            path: 'persons',
+            name: firstnameLower + separator + lastnameLower,
+            format: 'jpg',
+            alt: firstname + separatorAtl + lastname,
+        })(class="person__avatar")
+
+        div(class="person__name") !{obj.firstname} !{obj.lastname}
+        div(class="person__subject") !{obj.subject}
+        !="\n"
+        time(class="person__time", datetime=obj.date) !{obj.datevisual}
+    //END .person

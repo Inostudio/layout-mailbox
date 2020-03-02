@@ -1,0 +1,15 @@
+.email-attach-title {
+    display: flex;
+    align-items: center;
+
+    &__icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+        background-color: tomato;
+    }
+
+    &__text {
+        color: #1FB5EB;
+    }
+}

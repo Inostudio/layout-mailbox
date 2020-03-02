@@ -1,0 +1,12 @@
+@import "../previews/previews.css";
+
+.screen {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 380px 1fr 1.66fr;
+
+    &__viewport {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+}

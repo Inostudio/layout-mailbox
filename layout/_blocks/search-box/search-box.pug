@@ -1,0 +1,13 @@
+mixin search-box()
+    form(class="search-box")&attributes(attributes)
+        !="\n"
+        label(class="search-box__control")
+            !="\n"
+            span(class="search-box__label") Search
+            !="\n"
+            input(class="search-box__field", type="text", placeholder="Search")
+            !="\n"
+            span(class="search-box__icon")
+            !="\n"
+        !="\n"
+    //END .search-box

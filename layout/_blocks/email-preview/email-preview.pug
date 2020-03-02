@@ -1,0 +1,28 @@
+mixin email-preview(obj)
+
+    - var activeClass = ""
+    if obj.active
+        - activeClass= " is-active"
+    
+    !="\n"
+    button(class="email-preview" + activeClass, type="button")&attributes(attributes)
+
+        div(class="email-preview__container")
+
+            include ../person/person.pug
+            +person({
+                firstname: obj.firstname,
+                lastname: obj.lastname,
+                subject: obj.subject,
+                datevisual: obj.datevisual,
+                date : obj.date
+            })(class="email-preview__person")
+
+            div(class="email-preview__content")
+
+                div(class="email-preview__text"): p !{obj.text}
+
+                if obj.attach
+                    include ../email-attach-title/email-attach-title.pug
+                    +email-attach-title()(class="email-preview__attach")
+    //END .email-preview

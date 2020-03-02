@@ -1,0 +1,52 @@
+mixin previews
+
+    section(class="previews")&attributes(attributes)
+
+        h2(class="previews__title") Inbox
+
+        include ../search-box/search-box.pug
+        +search-box()(class="previews__search")
+
+        div(class="previews__content")
+
+            -
+                var previews = [
+                    {
+                        firstname: 'Sam',
+                        lastname: 'Miller',
+                        datevisual: 'Today 08:45 PM',
+                        date: '2020-03-02T20:45',
+                        subject: 'Portfolio',
+                        text: 'Stop wasting time looking for files buried in folders. Visually organize all your assets in one place',
+                        attach: true,
+                        active: true
+                    },
+                    {
+                        firstname: 'Lily',
+                        lastname: 'Jones',
+                        datevisual: 'Yesterday 01:11 PM',
+                        date: '2020-03-01T13:45',
+                        subject: 'Invitations',
+                        text: 'Its always a pleasure to have you all at my birthday parties. So, please dont be late for this one.'
+                    },
+                    {
+                        firstname: 'Smith',
+                        datevisual: 'Monday 06:45 PM',
+                        date: '2020-02-24T18:45',
+                        subject: 'Assingment Submission',
+                        text: 'If you want to set up an assignment with additional reviews, you can enable Moderated Grading.'
+                    },
+                    {
+                        firstname: 'Patrick',
+                        datevisual: 'Monday 05:15 PM',
+                        date: '2020-02-24T15:15',
+                        subject: 'Interview Scheduled hanks for applying for UI/UX',
+                        text: 'Hi Mike, thanks for applying for UI/UX Designer. We are reviewing resume\'s and will follow up in the thanks for applying for UI/UX Designer. We are reviewing resume\'s and will follow up in the.'
+                    }
+                ]
+
+            include ../email-preview/email-preview.pug
+
+            each preview in previews
+                +email-preview(preview)(class="previews__item")
+    //END .previews

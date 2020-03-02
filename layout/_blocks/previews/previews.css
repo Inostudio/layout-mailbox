@@ -1,0 +1,28 @@
+@import "../visually-hidden/visually-hidden.css";
+@import "../search-box/search-box.css";
+@import "../email-preview/email-preview.css";
+
+.previews {
+    padding: 50px 30px;
+    background-color: #f9faf5;
+
+    &__title {
+        @include visually-hidden;
+    }
+
+    &__search {
+        margin-bottom: 55px;
+    }
+
+    &__content {
+
+    }
+
+    &__item {
+        margin-top: 28px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
